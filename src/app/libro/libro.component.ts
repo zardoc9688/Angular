@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Libro } from '../modelos/libro';
-import { LibroService } from '../servicios/libro.service';
+import { Libro } from './modelos/libro';
+import { LibroService } from '../servivios/libro.service';
 
 @Component({
   selector: 'app-libro',

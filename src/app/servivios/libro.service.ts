@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Libro } from '../modelos/libro';
 
 //URL DEL BACKEND
-const BASE_URL: string = 'http://localhost:8000';
+const BASE_URL: string = 'http://10.4.144.252:8000';
 
 @Injectable({
   providedIn: 'root'
