@@ -1,1 +1,102 @@
-<p>libro works!</p>
+<div class="container">
+    <!-- Modal Create -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel" >Nuevo Libro</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="form" [formGroup]="libroForm">
+              <label for="autor" class="form-label">Autor</label>
+              <select class="form-select" aria-label="Default select example" name="autor" formControlName="autor">
+                <option value="3">Gabriel</option>
+              </select>
+              <br>
+              <label for="categoria" class="form-label">Categoria</label>
+              <select class="form-select" aria-label="Default select example" name="categoria" formControlName="categoria">
+                <option value="1">Literatura</option>
+              </select>
+              <br>
+              <label for="titulo" class="form-label">Título</label>
+              <input type="text" id="titulo" class="form-control" name="titulo" formControlName="titulo">
+              <br>
+              <label for="descripcion" class="form-label">Título</label>
+              <input type="text" id="descripcion" class="form-control" name="descripcion" formControlName="descripcion">
+              <br>
+              <label for="fecha_pub" class="form-label">Fecha Publicación</label>
+              <input type="text" id="fecha_pub" class="form-control" name="fecha_pub" formControlName="fecha_pub">
+              <br>
+              <button type="submit" class="btn btn-success" [disabled]="!libroForm.valid" (click)="add_libro()" data-bs-dismiss="modal">Create</button>
+  
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Update -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="UpdateLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel" >Nuevo Libro</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="form" [formGroup]="libroForm">
+              <label for="autor" class="form-label">Autor</label>
+              <select class="form-select" aria-label="Default select example" name="autor" formControlName="autor">
+                <option value="3">Gabriel</option>
+              </select>
+              <br>
+              <label for="categoria" class="form-label">Categoria</label>
+              <select class="form-select" aria-label="Default select example" name="categoria" formControlName="categoria">
+                <option value="1">Literatura</option>
+              </select>
+              <br>
+              <label for="titulo" class="form-label">Título</label>
+              <input type="text" id="titulo" class="form-control" name="titulo" formControlName="titulo">
+              <br>
+              <label for="descripcion" class="form-label">Título</label>
+              <input type="text" id="descripcion" class="form-control" name="descripcion" formControlName="descripcion">
+              <br>
+              <label for="fecha_pub" class="form-label">Fecha Publicación</label>
+              <input type="text" id="fecha_pub" class="form-control" name="fecha_pub" formControlName="fecha_pub">
+              <br>
+              <button type="submit" class="btn btn-success" [disabled]="!libroForm.valid" (click)="update_libro()" data-bs-dismiss="modal">Update</button>
+  
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="new_libro()">
+      Nuevo
+    </button>
+      <br><br>
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Título</th>
+              <th scope="col">Fecha Publicación</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let libro of libros">
+              <th scope="row">{{ libro.id }}</th>
+              <td>{{ libro.titulo }}</td>
+              <td>{{ libro.fecha_pub | date:'mediumDate' }}</td>
+              <td><a class="btn btn-warning" (click)="see_update(libro)" data-bs-toggle="modal" data-bs-target="#updateModal">updates</a> <a class="btn btn-danger" (click)="delete_libro(libro)">delete</a></td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
